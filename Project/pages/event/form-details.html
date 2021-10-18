@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Event Details | AEC</title>
+</head>
+
+<body>
+
+    <label>lang:</label>
+    <input type="radio" id="language1" name="language" value="pl" />
+    <label for="language1">Polish</label>
+    <input type="radio" id="language2" name="language" checked="checked" value="en" />
+    <label for="language1">English</label>
+
+    <header>
+        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/index.html">Main page</a></li>
+            <li><a href="/pages/character/list.html">Characters</a></li>
+            <li><a href="/pages/event/list.html">Events</a></li>
+            <li><a href="/pages/game_activity/list.html">Activity</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Event Details</h2>
+
+        <form>
+
+            <label for="Game_Master">Game_Master:</label>
+            <input type="text" name="Game_Master" id="Game_Master" value="Michael" disabled />
+            <span id="errorGame_Master"></span>
+
+            <label for="Date">Date:</label>
+            <input type="string" name="Date" id="Date" value="2021-13-09" disabled />
+            <span id="errorDate"></span>
+            <!-- Date - zamieniłem type z date na string-->
+
+            <div>
+                <a href="/pages/event/form.html">Add New</a>
+            </div>
+
+            <h2>Activity Details</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nick</th>
+                        <th>Class</th>
+                        <th>Race</th>
+                        <th>Aligment</th>
+                        <th>Level</th>
+                        <th>Activity_Name</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mikosz</td>
+                        <td>Mage</td>
+                        <td>Orc</td>
+                        <td>Horde</td>
+                        <td>60</td>
+                        <td>The Black Forest</td>
+                        <td>660</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <a href="/pages/event/list.html">Back</a>
+            </div>
+        </form>
+
+    </main>
+
+    <footer>
+        Mikołaj Ziółek, s18333
+    </footer>
+
+</body>
+
+</html>

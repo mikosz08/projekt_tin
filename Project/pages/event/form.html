@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Event | AEC</title>
+</head>
+
+<body>
+
+    <label>lang:</label>
+    <input type="radio" id="language1" name="language" value="pl" />
+    <label for="language1">Polish</label>
+    <input type="radio" id="language2" name="language" checked="checked" value="en" />
+    <label for="language1">English</label>
+
+    <header>
+        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/index.html">Main page</a></li>
+            <li><a href="/pages/character/list.html">Characters</a></li>
+            <li><a href="/pages/event/list.html">Events</a></li>
+            <li><a href="/pages/game_activity/list.html">Activity</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Add Event</h2>
+
+        <form>
+
+            <label for="Game_Master">Game_Master: *</label>
+            <input type="text" name="Game_Master" id="Game_Master" required />
+            <span id="errorGame_Master"></span>
+
+            <label for="Date">Date: *</label>
+            <input type="date" name="Date" id="Date" required />
+            <span id="errorDate"></span>
+
+            <label for="Game_Activity_Id">Activity</label>
+            <select name="Game_Activity_Id" id="Game_Activity_Id">
+                <option value="1">The Black Forest</option>
+                <option value="2">Temple of Azz'ak</option>
+                <option value="3">Town RP</option>
+            </select>
+
+            <label for="Character_Id">Character_Id</label>
+            <select name="Character_Id" id="Character_Id">
+                <option value="1">Mikosz</option>
+                <option value="2">Magmur</option>
+                <option value="3">Tobek</option>
+            </select>
+
+            <div>
+                <input type="submit" value="Add" />
+                <a href="/pages/event/list.html">Cancel</a>
+            </div>
+
+
+        </form>
+
+    </main>
+
+    <footer>
+        Mikołaj Ziółek, s18333
+    </footer>
+
+</body>
+
+</html>

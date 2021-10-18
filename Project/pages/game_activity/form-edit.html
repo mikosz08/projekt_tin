@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Activity | AEC</title>
+</head>
+
+<body>
+
+    <label>lang:</label>
+    <input type="radio" id="language1" name="language" value="pl" />
+    <label for="language1">Polish</label>
+    <input type="radio" id="language2" name="language" checked="checked" value="en" />
+    <label for="language1">English</label>
+
+    <header>
+        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/index.html">Main page</a></li>
+            <li><a href="/pages/character/list.html">Characters</a></li>
+            <li><a href="/pages/event/list.html">Events</a></li>
+            <li><a href="/pages/game_activity/list.html">Activity</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Edit Activity</h2>
+
+        <form>
+
+            <label for="Activity_Name">Activity_Name: *</label>
+            <input type="text" name="Activity_Name" id="Activity_Name" value="The Black Forest" required />
+            <span id="errorActivity_Name">Field is required!</span>
+
+            <label for="Experience">Experience: *</label>
+            <input type="text" name="Experience" id="Experience" value="660" required />
+            <span id="errorActivity_Name">Field is required!</span>
+
+            <div>
+                <input type="submit" value="Edit" />
+                <a href="/pages/game_activity/list.html">Cancel</a>
+            </div>
+
+        </form>
+
+    </main>
+
+    <footer>
+        Mikołaj Ziółek, s18333
+    </footer>
+
+</body>
+<!-- dod, usuwanie, edycja, szczegóły, lista -->
+
+</html>

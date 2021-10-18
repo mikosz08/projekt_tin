@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Character Invalid | AEC</title>
+</head>
+
+<body>
+
+    <label>lang:</label>
+    <input type="radio" id="language1" name="language" value="pl" />
+    <label for="language1">Polish</label>
+    <input type="radio" id="language2" name="language" checked="checked" value="en" />
+    <label for="language1">English</label>
+
+    <header>
+        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/index.html">Main page</a></li>
+            <li><a href="/pages/character/list.html">Characters</a></li>
+            <li><a href="/pages/event/list.html">Events</a></li>
+            <li><a href="/pages/game_activity/list.html">Activity</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Add Character</h2>
+
+        <form>
+
+            <label for="Nick">Nickname: *</label>
+            <input type="text" name="Nick" id="Nick" required />
+            <span id="errorNick">Field is required!</span>
+
+            <label for="Class">Class: *</label>
+            <input type="text" name="Class" id="Class" required />
+            <span id="errorNick">Field is required!</span>
+
+            <label for="Race">Race: *</label>
+            <input type="text" name="Race" id="Race" required />
+            <span id="errorNick">Field is required!</span>
+
+            <label for="Aligment">Aligment: </label>
+            <input type="text" name="Aligment" id="Aligment" />
+            <span id="errorAligment"></span>
+
+            <label for="Level">Level: *</label>
+            <input type="number" name="Level" id="Level" required />
+            <span id="errorNick">Field is required!</span>
+
+            <div>
+                <input type="submit" value="Add" />
+                <a href="">Cancel</a>
+            </div>
+
+
+        </form>
+
+    </main>
+
+    <footer>
+        Mikołaj Ziółek, s18333
+    </footer>
+
+</body>
+
+</html>
