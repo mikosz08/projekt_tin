@@ -5,6 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Activity | AEC</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script type="application/javascript" src="/JS/validationCommon.js"></script>
+    <script type="application/javascript" src="/JS/validateActivityForm.js"></script>
 </head>
 
 <body>
@@ -16,7 +20,7 @@
     <label for="language1">English</label>
 
     <header>
-        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+        <img src="/images/logo.png" alt="AEC Background" height="175" width="175">
     </header>
 
     <nav>
@@ -24,26 +28,27 @@
             <li><a href="/index.html">Main page</a></li>
             <li><a href="/pages/character/list.html">Characters</a></li>
             <li><a href="/pages/event/list.html">Events</a></li>
-            <li><a href="/pages/game_activity/list.html">Activity</a></li>
+            <li><a href="/pages/game_activity/list.html" class="active">Activity</a></li>
         </ul>
     </nav>
 
     <main>
         <h2>Add Activity</h2>
 
-        <form>
+        <form class="form" novalidate onsubmit="return validateForm();">
 
-            <label for="Activity_Name">Activity_Name: *</label>
+            <label for="Activity_Name">Activity_Name: <span class="symbol-required">*</span></label>
             <input type="text" name="Activity_Name" id="Activity_Name" required />
             <span id="errorActivity_Name"></span>
 
-            <label for="Experience">Experience: *</label>
+            <label for="Experience">Experience: <span class="symbol-required">*</span></label>
             <input type="text" name="Experience" id="Experience" required />
             <span id="errorExperience"></span>
 
-            <div>
-                <input type="submit" value="Add" />
-                <a href="/pages/game_activity/list.html">Cancel</a>
+            <div class="form-buttons">
+                <p class="errors-text" id="errorsSummary"></p>
+                <input type="submit" value="Add" class="form-buttons-submit" />
+                <a href="/pages/game_activity/list.html" class="form-buttons-cancel">Cancel</a>
             </div>
 
 

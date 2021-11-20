@@ -5,6 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Character | AEC</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script type="application/javascript" src="/JS/validationCommon.js"></script>
+    <script type="application/javascript" src="/JS/validationCharForm.js"></script>
 </head>
 
 <body>
@@ -16,13 +20,13 @@
     <label for="language1">English</label>
 
     <header>
-        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+        <img src="/images/logo.png" alt="AEC Background" height="175" width="175">
     </header>
 
     <nav>
         <ul>
             <li><a href="/index.html">Main page</a></li>
-            <li><a href="/pages/character/list.html">Characters</a></li>
+            <li><a href="/pages/character/list.html" class="active">Characters</a></li>
             <li><a href="/pages/event/list.html">Events</a></li>
             <li><a href="/pages/game_activity/list.html">Activity</a></li>
         </ul>
@@ -31,31 +35,32 @@
     <main>
         <h2>Add Character</h2>
 
-        <form>
+        <form class="form" novalidate onsubmit="return validateForm();">
 
-            <label for="Nick">Nickname: *</label>
-            <input type="text" name="Nick" id="Nick" required />
+            <label for="Nick">Nickname: <span class="symbol-required">*</span></label>
+            <input type="text" name="Nick" id="Nick" placeholder="2-60" required />
             <span id="errorNick"></span>
-
-            <label for="Class">Class: *</label>
-            <input type="text" name="Class" id="Class" required />
+            
+            <label for="Class">Class: <span class="symbol-required">*</span></label>
+            <input type="text" name="Class" id="Class" placeholder="e.g. Cleric" required />
             <span id="errorClass"></span>
 
-            <label for="Race">Race: *</label>
-            <input type="text" name="Race" id="Race" required />
+            <label for="Race">Race: <span class="symbol-required">*</span></label>
+            <input type="text" name="Race" id="Race" placeholder="e.g. Tauren" required />
             <span id="errorRace"></span>
 
-            <label for="Aligment">Aligment: </label>
-            <input type="text" name="Aligment" id="Aligment" />
-            <span id="errorAligment"></span>
+            <label for="Alignment">Aligment: </label>
+            <input type="text" name="Alignment" id="Alignment" />
+            <span id="errorAlignment"></span>
 
-            <label for="Level">Level: *</label>
-            <input type="number" name="Level" id="Level" required />
+            <label for="Level">Level: <span class="symbol-required">*</span></label>
+            <input type="number" name="Level" id="Level" placeholder="1-20" required />
             <span id="errorLevel"></span>
 
-            <div>
-                <input type="submit" value="Add" />
-                <a href="/pages/character/list.html">Cancel</a>
+            <div class="form-buttons">
+                <p class="errors-text" id="errorsSummary"></p>
+                <input type="submit" value="Add" class="form-buttons-submit" />
+                <a href="/pages/character/list.html" class="form-buttons-cancel">Cancel</a>
             </div>
 
 

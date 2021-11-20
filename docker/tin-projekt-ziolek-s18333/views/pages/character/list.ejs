@@ -1,0 +1,88 @@
+
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Character list</h2>
+
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Nick</th>
+                    <th>Class</th>
+                    <th class="table-hidden-cols-first">Race</th>
+                    <th class="table-hidden-cols-first">Aligment</th>
+                    <th class="table-hidden-cols-second">Level</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Mikosz</td>
+                    <td>Mage</td>
+                    <td class="table-hidden-cols-first">Orc</td>
+                    <td class="table-hidden-cols-first">Horde</td>
+                    <td class="table-hidden-cols-second">60</td>
+                    <td>
+                        <ul class="list-actions">
+                            <li>
+                                <a href="/pages/character/form-details.html"
+                                    class="list-actions-button-details">Details</a>
+                            </li>
+                            <li>
+                                <a href="/pages/character/form-edit.html" class="list-actions-button-edit">Edit</a>
+
+                            </li>
+                            <li>
+                                <a class="list-actions-button-delete">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Magmur</td>
+                    <td>Shaman</td>
+                    <td class="table-hidden-cols-first">Orc</td>
+                    <td class="table-hidden-cols-first">None</td>
+                    <td class="table-hidden-cols-second">60</td>
+                    <td>
+                        <ul class="list-actions">
+                            <li>
+                                <a href="/pages/character/form-details.html"
+                                    class="list-actions-button-details">Details</a>
+                            </li>
+                            <li>
+                                <a href="/pages/character/form-edit.html" class="list-actions-button-edit">Edit</a>
+                            </li>
+                            <li>
+                                <a class="list-actions-button-delete">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tobek</td>
+                    <td>Rogue</td>
+                    <td class="table-hidden-cols-first">Orc</td>
+                    <td class="table-hidden-cols-first"> Aliance</td>
+                    <td class="table-hidden-cols-second">60</td>
+                    <td>
+                        <ul class="list-actions">
+                            <li>
+                                <a href="character/details" class="list-actions-button-details">Detailss</a>
+                            </li>
+                            <li>
+                                <a href="character/edit" class="list-actions-button-edit">Edit</a>
+                            </li>
+                            <li>
+                                <a class="list-actions-button-delete">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <!-- Additional data -->
+            </tbody>
+        </table>
+        <p><a href="character/add" class="button-add">Add New Character</a></p>
+    </main>
+
+    <%- include('../../fragments/footer.ejs') %>

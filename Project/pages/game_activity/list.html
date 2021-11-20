@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Activity List | AEC</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 </head>
 
 <body>
@@ -16,7 +18,7 @@
     <label for="language1">English</label>
 
     <header>
-        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+        <img src="/images/logo.png" alt="AEC Background" height="175" width="175">
     </header>
 
     <nav>
@@ -24,14 +26,14 @@
             <li><a href="/index.html">Main page</a></li>
             <li><a href="/pages/character/list.html">Characters</a></li>
             <li><a href="/pages/event/list.html">Events</a></li>
-            <li><a href="/pages/game_activity/list.html">Activity</a></li>
+            <li><a href="/pages/game_activity/list.html" class="active">Activity</a></li>
         </ul>
     </nav>
 
     <main>
         <h2>Activity list</h2>
 
-        <table>
+        <table class="table-list">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -44,15 +46,16 @@
                     <td>The Black Forest</td>
                     <td>660</td>
                     <td>
-                        <ul>
+                        <ul class="list-actions">
                             <li>
-                                <a href="/pages/game_activity/form-details.html">Details</a>
+                                <a href="/pages/game_activity/form-details.html"
+                                    class="list-actions-button-details">Details</a>
                             </li>
                             <li>
-                                <a href="/pages/game_activity/form-edit.html">Edit</a>
+                                <a href="/pages/game_activity/form-edit.html" class="list-actions-button-edit">Edit</a>
                             </li>
                             <li>
-                                <a href="/pages/game_activity/form-delete.html">Delete</a>
+                                <a class="list-actions-button-delete">Delete</a>
                             </li>
                         </ul>
                     </td>
@@ -61,15 +64,16 @@
                     <td>Temple of Azz'ak</td>
                     <td>1440</td>
                     <td>
-                        <ul>
+                        <ul class="list-actions">
                             <li>
-                                <a href="/pages/game_activity/form-details.html">Details</a>
+                                <a href="/pages/game_activity/form-details.html"
+                                    class="list-actions-button-details">Details</a>
                             </li>
                             <li>
-                                <a href="/pages/game_activity/form-edit.html">Edit</a>
+                                <a href="/pages/game_activity/form-edit.html" class="list-actions-button-edit">Edit</a>
                             </li>
                             <li>
-                                <a href="/pages/game_activity/form-delete.html">Delete</a>
+                                <a class="list-actions-button-delete">Delete</a>
                             </li>
                         </ul>
                     </td>
@@ -78,24 +82,24 @@
                     <td>Town RP</td>
                     <td>1000</td>
                     <td>
-                        <ul>
+                        <ul class="list-actions">
                             <li>
-                                <a href="/pages/game_activity/form-details.html">Details</a>
+                                <a href="/pages/game_activity/form-details.html"
+                                    class="list-actions-button-details">Details</a>
                             </li>
                             <li>
-                                <a href="/pages/game_activity/form-edit.html">Edit</a>
+                                <a href="/pages/game_activity/form-edit.html" class="list-actions-button-edit">Edit</a>
                             </li>
                             <li>
-                                <a href="/pages/game_activity/form-delete.html">Delete</a>
+                                <a class="list-actions-button-delete">Delete</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
             </tbody>
-            <p><a href="/pages/game_activity/form.html">>Add New Activity<</a>
-            </p>
-        </table>
 
+        </table>
+        <p><a href="/pages/game_activity/form.html" class="button-add">Add New Activity</a></p>
     </main>
 
     <footer>

@@ -5,6 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Character | AEC</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script type="application/javascript" src="/JS/validationCommon.js"></script>
+    <script type="application/javascript" src="/JS/validationCharForm.js"></script>
 </head>
 
 <body>
@@ -16,13 +20,13 @@
     <label for="language1">English</label>
 
     <header>
-        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+        <img src="/images/logo.png" alt="AEC Background" height="175" width="175">
     </header>
 
     <nav>
         <ul>
             <li><a href="/index.html">Main page</a></li>
-            <li><a href="/pages/character/list.html">Characters</a></li>
+            <li><a href="/pages/character/list.html" class="active">Characters</a></li>
             <li><a href="/pages/event/list.html">Events</a></li>
             <li><a href="/pages/game_activity/list.html">Activity</a></li>
         </ul>
@@ -31,7 +35,7 @@
     <main>
         <h2>Edit Character</h2>
 
-        <form>
+        <form class="form" novalidate onsubmit="return validateForm();">
 
             <label for="Nick">Nickname: *</label>
             <input type="text" name="Nick" id="Nick" value="Mikosz" required />
@@ -53,9 +57,10 @@
             <input type="number" name="Level" id="Level" value="60" required />
             <span id="errorLevel"></span>
 
-            <div>
-                <input type="submit" value="Edit" />
-                <a href="/pages/character/list.html">Cancel</a>
+            <div class="form-buttons">
+                <p class="errors-text" id="errorsSummary"></p>
+                <input type="submit" value="Edit" class="form-buttons-submit" />
+                <a href="/pages/character/list.html" class="form-buttons-cancel">Cancel</a>
             </div>
 
 
@@ -68,6 +73,5 @@
     </footer>
 
 </body>
-<!-- dod, usuwanie, edycja, szczegóły, lista -->
 
 </html>

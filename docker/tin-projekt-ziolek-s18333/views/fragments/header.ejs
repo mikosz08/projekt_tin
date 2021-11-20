@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Event Creator</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script type="application/javascript" src="/JS/validateCommon.js"></script>
+</head>
+
+<body>
+
+    <label>lang:</label>
+    <input type="radio" id="language1" name="language" value="pl" />
+    <label for="language1">Polish</label>
+    <input type="radio" id="language2" name="language" checked="checked" value="en" />
+    <label for="language1">English</label>
+
+    <header>
+        <img src="/images/logo.png" alt="AEC Background" height="175" width="175">
+        <h1 class="main-page-title">Activity Event Creator</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>">Main page</a></li>
+            <li><a href="/character" class="<%= navLocation == 'char' ? 'active' : ''%>">Characters</a></li>
+            <li><a href="/event" class="<%= navLocation == 'event' ? 'active' : ''%>">Events</a></li>
+            <li><a href="/activity" class="<%= navLocation == 'activ' ? 'active' : ''%>">Activity</a></li>
+        </ul>
+    </nav>

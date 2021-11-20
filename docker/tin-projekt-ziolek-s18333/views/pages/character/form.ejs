@@ -1,0 +1,39 @@
+<%- include('../../fragments/header.ejs') %>
+    <script type="application/javascript" src="/JS/validateCharForm.js"></script>
+    <!-- czy można dynamicznie podmieniać skrypty w headerze? -->
+    <main>
+        <h2>Add Character</h2>
+
+        <form class="form" novalidate onsubmit="return validateForm();">
+
+            <label for="Nick">Nickname: <span class="symbol-required">*</span></label>
+            <input type="text" name="Nick" id="Nick" placeholder="2-60" required />
+            <span id="errorNick"></span>
+
+            <label for="Class">Class: <span class="symbol-required">*</span></label>
+            <input type="text" name="Class" id="Class" placeholder="e.g. Cleric" required />
+            <span id="errorClass"></span>
+
+            <label for="Race">Race: <span class="symbol-required">*</span></label>
+            <input type="text" name="Race" id="Race" placeholder="e.g. Tauren" required />
+            <span id="errorRace"></span>
+
+            <label for="Alignment">Aligment: </label>
+            <input type="text" name="Alignment" id="Alignment" />
+            <span id="errorAlignment"></span>
+
+            <label for="Level">Level: <span class="symbol-required">*</span></label>
+            <input type="number" name="Level" id="Level" placeholder="1-20" required />
+            <span id="errorLevel"></span>
+
+            <div class="form-buttons">
+                <p class="errors-text" id="errorsSummary"></p>
+                <input type="submit" value="Add" class="form-buttons-submit" />
+                <a href="/character" class="form-buttons-cancel">Cancel</a>
+            </div>
+
+
+        </form>
+
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

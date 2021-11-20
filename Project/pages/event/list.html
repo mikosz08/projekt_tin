@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Event List | AEC</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 </head>
 
 <body>
@@ -16,14 +18,14 @@
     <label for="language1">English</label>
 
     <header>
-        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+        <img src="/images/logo.png" alt="AEC Background" height="175" width="175">
     </header>
 
     <nav>
         <ul>
             <li><a href="/index.html">Main page</a></li>
             <li><a href="/pages/character/list.html">Characters</a></li>
-            <li><a href="/pages/event/list.html">Events</a></li>
+            <li><a href="/pages/event/list.html" class="active">Events</a></li>
             <li><a href="/pages/game_activity/list.html">Activity</a></li>
         </ul>
     </nav>
@@ -31,7 +33,7 @@
     <main>
         <h2>Event list</h2>
 
-        <table>
+        <table class="table-list">
             <thead>
                 <tr>
                     <th>Game_Master</th>
@@ -45,15 +47,15 @@
                     <td>Michael</td>
                     <td>2021-13-09</td>
                     <td>
-                        <ul>
+                        <ul class="list-actions">
                             <li>
-                                <a href="/pages/event/form-details.html">Details</a>
+                                <a href="/pages/event/form-details.html" class="list-actions-button-details">Details</a>
                             </li>
                             <li>
-                                <a href="/pages/event/form-edit.html">Edit</a>
+                                <a href="/pages/event/form-edit.html" class="list-actions-button-edit">Edit</a>
                             </li>
                             <li>
-                                <a href="/pages/event/form-delete.html">Delete</a>
+                                <a class="list-actions-button-delete">Delete</a>
                             </li>
                         </ul>
                     </td>
@@ -62,15 +64,15 @@
                     <td>Johny</td>
                     <td>2021-04-11</td>
                     <td>
-                        <ul>
+                        <ul class="list-actions">
                             <li>
-                                <a href="/pages/event/form-details.html">Details</a>
+                                <a href="/pages/event/form-details.html" class="list-actions-button-details">Details</a>
                             </li>
                             <li>
-                                <a href="/pages/event/form-edit.html">Edit</a>
+                                <a href="/pages/event/form-edit.html" class="list-actions-button-edit">Edit</a>
                             </li>
                             <li>
-                                <a href="/pages/event/form-delete.html">Delete</a>
+                                <a class="list-actions-button-delete">Delete</a>
                             </li>
                         </ul>
                     </td>
@@ -79,24 +81,23 @@
                     <td>Michael</td>
                     <td>2021-12-12</td>
                     <td>
-                        <ul>
+                        <ul class="list-actions">
                             <li>
-                                <a href="/pages/event/form-details.html">Details</a>
+                                <a href="/pages/event/form-details.html" class="list-actions-button-details">Details</a>
                             </li>
                             <li>
-                                <a href="/pages/event/form-edit.html">Edit</a>
+                                <a href="/pages/event/form-edit.html" class="list-actions-button-edit">Edit</a>
                             </li>
                             <li>
-                                <a href="/pages/event/form-delete.html">Delete</a>
+                                <a class="list-actions-button-delete">Delete</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
             </tbody>
-            <p><a href="/pages/event/form.html">>Add New Event<</a>
-            </p>
-        </table>
 
+        </table>
+        <p><a href="/pages/event/form.html" class="button-add">Add New Event</a></p>
     </main>
 
     <footer>

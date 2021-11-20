@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Activity Details | AEC</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 </head>
 
 <body>
@@ -16,7 +18,7 @@
     <label for="language1">English</label>
 
     <header>
-        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+        <img src="/images/logo.png" alt="AEC Background" height="175" width="175">
     </header>
 
     <nav>
@@ -24,14 +26,14 @@
             <li><a href="/index.html">Main page</a></li>
             <li><a href="/pages/character/list.html">Characters</a></li>
             <li><a href="/pages/event/list.html">Events</a></li>
-            <li><a href="/pages/game_activity/list.html">Activity</a></li>
+            <li><a href="/pages/game_activity/list.html" class="active">Activity</a></li>
         </ul>
     </nav>
 
     <main>
         <h2>Activity Details</h2>
 
-        <form>
+        <form class="form">
 
             <label for="Activity_Name">Activity_Name</label>
             <input type="text" name="Activity_Name" id="Activity_Name" value="The Black Forest" disabled />
@@ -41,22 +43,22 @@
             <input type="text" name="Experience" id="Experience" value="660" disabled />
             <span id="errorExperience"></span>
 
-            <div>
-                <a href="/pages/character/form.html">Add New</a>
+            <div class="form-buttons">
+                <a href="/pages/character/form-edit.html" class="form-buttons-submit">Edit</a>
             </div>
 
-            <h2>Activity Details</h2>
+            <h2>Event Details</h2>
 
-            <table>
+            <table class="table-details-list">
                 <thead>
                     <tr>
                         <th>Game Master</th>
                         <th>Date</th>
                         <th>Nick</th>
                         <th>Class</th>
-                        <th>Race</th>
-                        <th>Aligment</th>
-                        <th>Level</th>
+                        <th class="table-hidden-cols-second">Race</th>
+                        <th class="table-hidden-cols-second">Aligment</th>
+                        <th class="table-hidden-cols-second">Level</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,14 +67,14 @@
                         <td>2021-13-09</td>
                         <td>Mikosz</td>
                         <td>Mage</td>
-                        <td>Orc</td>
-                        <td>Horde</td>
-                        <td>60</td>
+                        <td class="table-hidden-cols-second">Orc</td>
+                        <td class="table-hidden-cols-second">Horde</td>
+                        <td class="table-hidden-cols-second">60</td>
                     </tr>
                 </tbody>
             </table>
-            <div>
-                <a href="/pages/game_activity/list.html">Back</a>
+            <div class="form-buttons">
+                <a href="/pages/game_activity/list.html" class="form-buttons-cancel">Back</a>
             </div>
         </form>
 

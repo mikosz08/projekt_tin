@@ -1,0 +1,52 @@
+<%- include('../../fragments/header.ejs') %>
+
+    <main>
+        <h2>Activity Details</h2>
+
+        <form class="form">
+
+            <label for="Activity_Name">Activity_Name</label>
+            <input type="text" name="Activity_Name" id="Activity_Name" value="The Black Forest" disabled />
+            <span id="errorActivity_Name"></span>
+
+            <label for="Experience">Experience</label>
+            <input type="text" name="Experience" id="Experience" value="660" disabled />
+            <span id="errorExperience"></span>
+
+            <div class="form-buttons">
+                <a href="/activity/edit" class="form-buttons-submit">Edit</a>
+            </div>
+
+            <h2>Event Details</h2>
+
+            <table class="table-details-list">
+                <thead>
+                    <tr>
+                        <th>Game Master</th>
+                        <th>Date</th>
+                        <th>Nick</th>
+                        <th>Class</th>
+                        <th class="table-hidden-cols-second">Race</th>
+                        <th class="table-hidden-cols-second">Aligment</th>
+                        <th class="table-hidden-cols-second">Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Michael</td>
+                        <td>2021-13-09</td>
+                        <td>Mikosz</td>
+                        <td>Mage</td>
+                        <td class="table-hidden-cols-second">Orc</td>
+                        <td class="table-hidden-cols-second">Horde</td>
+                        <td class="table-hidden-cols-second">60</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-buttons">
+                <a href="/activity" class="form-buttons-cancel">Back</a>
+            </div>
+        </form>
+
+    </main>
+<%- include('../../fragments/footer.ejs') %>

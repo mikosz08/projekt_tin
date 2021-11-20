@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Character Details | AEC</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 </head>
 
 <body>
@@ -16,13 +18,13 @@
     <label for="language1">English</label>
 
     <header>
-        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+        <img src="/images/logo.png" alt="AEC Background" height="175" width="175">
     </header>
 
     <nav>
         <ul>
             <li><a href="/index.html">Main page</a></li>
-            <li><a href="/pages/character/list.html">Characters</a></li>
+            <li><a href="/pages/character/list.html" class="active">Characters</a></li>
             <li><a href="/pages/event/list.html">Events</a></li>
             <li><a href="/pages/game_activity/list.html">Activity</a></li>
         </ul>
@@ -31,7 +33,7 @@
     <main>
         <h2>Character Details</h2>
 
-        <form>
+        <form class="form">
 
             <label for="Nick">Nickname:</label>
             <input type="text" name="Nick" value="Mikosz" id="Nick" disabled />
@@ -53,13 +55,13 @@
             <input type="number" name="Level" value="60" id="Level" disabled />
             <span id="errorLevel"></span>
 
-            <div>
-                <a href="/pages/character/form.html">Add New</a>
+            <div class="form-buttons">
+                <a href="/pages/character/form-edit.html" class="form-buttons-submit">Edit</a>
             </div>
 
             <h2>Activity Details</h2>
 
-            <table>
+            <table class="table-details-list">
                 <thead>
                     <tr>
                         <th>Game Master</th>
@@ -89,8 +91,8 @@
                     </tr>
                 </tbody>
             </table>
-            <div>
-                <a href="/pages/character/list.html">Back</a>
+            <div class="form-buttons">
+                <a href="/pages/character/list.html" class="form-buttons-cancel">Back</a>
             </div>
         </form>
 

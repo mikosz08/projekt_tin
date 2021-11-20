@@ -1,0 +1,54 @@
+<%- include('../../fragments/header.ejs') %>
+
+    <main>
+        <h2>Event Details</h2>
+
+        <form class="form">
+
+            <label for="Game_Master">Game_Master:</label>
+            <input type="text" name="Game_Master" id="Game_Master" value="Michael" disabled />
+            <span id="errorGame_Master"></span>
+
+            <label for="Date">Date:</label>
+            <input type="text" name="Date" id="Date" value="2021-13-09" disabled />
+            <span id="errorDate"></span>
+
+            <div class="form-buttons">
+                <a href="../event/edit" class="form-buttons-submit">Edit</a>
+            </div>
+
+            <h2>Details</h2>
+
+            <table class="table-details-list">
+                <thead>
+                    <tr>
+                        <th>Nick</th>
+                        <th>Class</th>
+                        <th class="table-hidden-cols-second">Race</th>
+                        <th class="table-hidden-cols-second">Aligment</th>
+                        <th class="table-hidden-cols-second">Level</th>
+                        <th>Activity_Name</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mikosz</td>
+                        <td>Mage</td>
+                        <td class="table-hidden-cols-second">Orc</td>
+                        <td class="table-hidden-cols-second">Horde</td>
+                        <td class="table-hidden-cols-second">60</td>
+                        <td>The Black Forest</td>
+                        <td>660</td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <div class="form-buttons">
+                <a href="/event" class="form-buttons-cancel">Back</a>
+            </div>
+        </form>
+
+    </main>
+
+<%- include('../../fragments/footer.ejs') %>

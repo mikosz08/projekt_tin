@@ -5,6 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Event | AEC</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script type="application/javascript" src="/JS/validationCommon.js"></script>
+    <script type="application/javascript" src="/JS/validateEventForm.js"></script>
 </head>
 
 <body>
@@ -16,14 +20,14 @@
     <label for="language1">English</label>
 
     <header>
-        <img src="/images/logo.png" alt="AEC Background" height="256" width="256">
+        <img src="/images/logo.png" alt="AEC Background" height="175" width="175">
     </header>
 
     <nav>
         <ul>
             <li><a href="/index.html">Main page</a></li>
             <li><a href="/pages/character/list.html">Characters</a></li>
-            <li><a href="/pages/event/list.html">Events</a></li>
+            <li><a href="/pages/event/list.html" class="active">Events</a></li>
             <li><a href="/pages/game_activity/list.html">Activity</a></li>
         </ul>
     </nav>
@@ -31,33 +35,38 @@
     <main>
         <h2>Add Event</h2>
 
-        <form>
+        <form class="form" novalidate onsubmit="return validateForm();">
 
-            <label for="Game_Master">Game_Master: *</label>
+            <label for="Game_Master">Game_Master: <span class="symbol-required">*</span></label>
             <input type="text" name="Game_Master" id="Game_Master" required />
             <span id="errorGame_Master"></span>
 
-            <label for="Date">Date: *</label>
+            <label for="Date">Date: <span class="symbol-required">*</span></label>
             <input type="date" name="Date" id="Date" required />
             <span id="errorDate"></span>
 
-            <label for="Game_Activity_Id">Activity</label>
+            <label for="Game_Activity_Id">Activity <span class="symbol-required">*</span></label>
             <select name="Game_Activity_Id" id="Game_Activity_Id">
+                <option value="">Pick Activity</option>
                 <option value="1">The Black Forest</option>
                 <option value="2">Temple of Azz'ak</option>
                 <option value="3">Town RP</option>
             </select>
+            <span id="errorGame_Activity_Id"></span>
 
-            <label for="Character_Id">Character_Id</label>
+            <label for="Character_Id">Character_Id <span class="symbol-required">*</span></label>
             <select name="Character_Id" id="Character_Id">
+                <option value="">Pick Character</option>
                 <option value="1">Mikosz</option>
                 <option value="2">Magmur</option>
                 <option value="3">Tobek</option>
             </select>
+            <span id="errorCharacter_Id"></span>
 
-            <div>
-                <input type="submit" value="Add" />
-                <a href="/pages/event/list.html">Cancel</a>
+            <div class="form-buttons">
+                <p class="errors-text" id="errorsSummary"></p>
+                <input type="submit" value="Add" class="form-buttons-submit" />
+                <a href="/pages/event/list.html" class="form-buttons-cancel">Cancel</a>
             </div>
 
 
