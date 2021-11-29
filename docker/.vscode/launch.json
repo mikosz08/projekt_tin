@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "Docker Node.js Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "platform": "node",
+            "node": {
+                "package": "${workspaceFolder}/tin-projekt-ziolek-s18333/package.json",
+                "localRoot": "${workspaceFolder}/tin-projekt-ziolek-s18333"
+            }
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+CREATE SCHEMA IF NOT EXISTS `tin-s18333-sequelize`;

@@ -4,10 +4,21 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//Routes
 var indexRouter = require('./routes/index');
 const characterRouter = require('./routes/characterRoute');
 const eventRouter = require('./routes/eventRoute');
 const activityRouter = require('./routes/activityRoute');
+
+const sequelizeInit = require('./config/sequelize/init');
+sequelizeInit()
+  .catch(err => {
+    console.log(err);
+  });
+
+const charApiRouter = require('./routes/api/CharacterApiRoute');
+const actApiRouter = require('./routes/api/ActivityApiRoute');
+const eventApiRouter = require('./routes/api/EventApiRoute');
 
 var app = express();
 
@@ -37,6 +48,12 @@ app.use('activity/add', activityRouter);
 app.use('activity/details', activityRouter);
 app.use('activity/edit', activityRouter);
 
+//Sequelize routers:
+app.use('/api/characters', charApiRouter);
+app.use('/api/activities', actApiRouter);
+app.use('/api/events', eventApiRouter);
+
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -52,5 +69,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
