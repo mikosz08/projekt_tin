@@ -1,11 +1,11 @@
 function validateForm() {
     // Character Validation script.
 
-    const characterNickInput = document.getElementById('Nick');
-    const characterClassInput = document.getElementById('Class');
-    const characterRaceInput = document.getElementById('Race');
-    const characterAlignmentInput = document.getElementById('Alignment');
-    const characterLevelInput = document.getElementById('Level');
+    const characterNickInput = document.getElementById('name');
+    const characterClassInput = document.getElementById('char_class');
+    const characterRaceInput = document.getElementById('race');
+    const characterAlignmentInput = document.getElementById('aligment');
+    const characterLevelInput = document.getElementById('level');
 
     const errorNick = document.getElementById('errorNick');
     const errorClass = document.getElementById('errorClass');

@@ -1,36 +1,86 @@
 <%- include('../../fragments/header.ejs') %>
-    <script type="application/javascript" src="/JS/validateCharForm.js"></script>
-    <!-- czy można dynamicznie podmieniać skrypty w headerze? -->
+
     <main>
-        <h2>Add Character</h2>
+        <script type="application/javascript" src="/JS/validateCharForm.js"></script>
+        <h2>
+            <%= pageTitle %>
+        </h2>
 
-        <form class="form" novalidate onsubmit="return validateForm();">
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
 
-            <label for="Nick">Nickname: <span class="symbol-required">*</span></label>
-            <input type="text" name="Nick" id="Nick" placeholder="2-60" required />
+            <input type="hidden" name="_id" value="<%= char._id %>">
+
+            <label for="name">Nickname: <span class="symbol-required">*</span></label>
+            <input type="text" name="name" id="name" placeholder="2-60" value="<%= char.name %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
             <span id="errorNick"></span>
 
-            <label for="Class">Class: <span class="symbol-required">*</span></label>
-            <input type="text" name="Class" id="Class" placeholder="e.g. Cleric" required />
+            <label for="char_class">Class: <span class="symbol-required">*</span></label>
+            <input type="text" name="char_class" id="char_class" placeholder="e.g. Cleric" 
+                value="<%= char.char_class%>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
             <span id="errorClass"></span>
 
-            <label for="Race">Race: <span class="symbol-required">*</span></label>
-            <input type="text" name="Race" id="Race" placeholder="e.g. Tauren" required />
+            <label for="race">Race: <span class="symbol-required">*</span></label>
+            <input type="text" name="race" id="race" placeholder="e.g. Tauren" value="<%= char.race%>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
             <span id="errorRace"></span>
 
-            <label for="Alignment">Aligment: </label>
-            <input type="text" name="Alignment" id="Alignment" />
+            <label for="aligment">Aligment: </label>
+            <input type="text" name="aligment" id="aligment" placeholder="e.g. Horde" 
+                value="<%= char.aligment%>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
             <span id="errorAlignment"></span>
 
-            <label for="Level">Level: <span class="symbol-required">*</span></label>
-            <input type="number" name="Level" id="Level" placeholder="1-20" required />
+            <label for="level">Level: <span class="symbol-required">*</span></label>
+            <input type="number" name="level" id="level" placeholder="1-20"  value="<%= char.level%>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
             <span id="errorLevel"></span>
+
 
             <div class="form-buttons">
                 <p class="errors-text" id="errorsSummary"></p>
-                <input type="submit" value="Add" class="form-buttons-submit" />
-                <a href="/character" class="form-buttons-cancel">Cancel</a>
+                <% if (formMode=='showDetails' ) {%>
+                    <a href="/character/edit/<%= char._id %>" class="form-buttons-submit">Go to Edit</a>
+                    <% } else {%>
+                        <input class="form-buttons-submit" type="submit" value="<%=btnLabel%>" />
+                        <%}%>
+                            <% if (formMode=='showDetails' ) { %>
+                                <a href="/character" class="form-buttons-cancel">Back</a>
+                                <% } else {%>
+                                    <a href="/character" class="form-buttons-cancel">Cancel</a>
+
+                                    <%}%>
             </div>
+
+            <% if ( formMode=='showDetails' || formMode=='edit' ) { %>
+                <h2>Activity:</h2>
+
+                <table class="table-details-list">
+                    <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>Game Master</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <% for (let event of char.events) { %>
+                            <tr>
+                                <td><a href="/activity/details/<%= event.activity._id%>">
+                                        <%= event.activity.name %>
+                                    </a></td>
+                                <td>
+                                    <%=event.game_master%>
+                                </td>
+                                <td>
+                                    <%=event.eventDate.toISOString().split('T') [0] %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+                <% } %>
+
 
 
         </form>

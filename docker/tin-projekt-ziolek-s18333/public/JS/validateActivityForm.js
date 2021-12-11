@@ -2,8 +2,8 @@ function validateForm() {
     // Character Validation script.
 
 
-    const activityNameInput = document.getElementById('Activity_Name');
-    const activityExpInput = document.getElementById('Experience');
+    const activityNameInput = document.getElementById('name');
+    const activityExpInput = document.getElementById('experience');
 
     const errorName = document.getElementById('errorActivity_Name');
     const errorExp = document.getElementById('errorExperience');

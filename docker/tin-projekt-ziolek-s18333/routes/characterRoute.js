@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 const characterController = require('../controllers/characterController');
+// const { route } = require('./activityRoute');
 
-router.get('/', characterController.showActivityList);
+router.get('/', characterController.showCharacterList);
+router.get('/add', characterController.showAddCharacter);
+router.get('/details/:charId', characterController.showCharacterDetails);
+router.get('/edit/:charId', characterController.showCharacterEdit);
 
-router.get('/add', characterController.showAddActivity);
-
-router.get('/details', characterController.showActivityDetails);
-//jak zrobić route na /details/:charId ????
-
-router.get('/edit', characterController.showActivityEdit);
+router.post('/add', characterController.addCharacter)
+router.post('/edit', characterController.updateCharacter)
+router.get('/delete/:charId', characterController.deleteCharacter);
 
 module.exports = router;

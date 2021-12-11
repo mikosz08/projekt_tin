@@ -37,6 +37,7 @@ app.use('/character', characterRouter);
 app.use('character/add', characterRouter);
 app.use('character/details', characterRouter);
 app.use('character/edit', characterRouter);
+app.use('character/delete', characterRouter);
 
 app.use('/event', eventRouter);
 app.use('event/add', eventRouter);

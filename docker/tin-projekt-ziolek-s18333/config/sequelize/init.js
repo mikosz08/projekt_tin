@@ -14,7 +14,7 @@ module.exports = () => {
 
     let allCharacters, allActivities;
     return sequelize
-        .sync({ foce: true })
+        .sync({ force: true })
         .then(() => {
             return Character.findAll();
         })
@@ -23,9 +23,9 @@ module.exports = () => {
             if (!chars || chars.length == 0) {
 
                 return Character.bulkCreate([
-                    { name: 'Mikosz07', char_class: 'Mage', race: 'Orc', aligment: 'Taurens', level: 60 },
-                    { name: 'Mikosz17', char_class: 'Mage', race: 'Orc', aligment: 'Taurens', level: 60 },
-                    { name: 'Mikosz27', char_class: 'Mage', race: 'Orc', aligment: 'Taurens', level: 60 },
+                    { name: 'Supra', char_class: 'Paladin', race: 'Elf', aligment: 'Horde', level: 16 },
+                    { name: 'Tobi', char_class: 'Rogue', race: 'Gnome', aligment: 'Aliance', level: 7 },
+                    { name: 'Mikosz', char_class: 'Mage', race: 'Orc', aligment: 'Horde', level: 13 },
                 ])
                     .then(() => {
                         return Character.findAll();
@@ -46,8 +46,8 @@ module.exports = () => {
 
                 return Activiy.bulkCreate([
 
-                    { name: 'Kobolt Cave', experience: 1920 },
-                    { name: 'Iron Desert', experience: 420 },
+                    { name: 'Kobolt Cave', experience: 4200 },
+                    { name: 'Iron Desert', experience: 570 },
 
                 ])
                     .then(() => {
@@ -72,9 +72,10 @@ module.exports = () => {
             if (!events || events.length == 0) {
 
                 return Event.bulkCreate([
-                    { activity_id: allActivities[0]._id, character_id: allCharacters[0]._id, eventDate: '2001-01-01', game_master: 'Michael_1' },
-                    { activity_id: allActivities[0]._id, character_id: allCharacters[1]._id, eventDate: '2002-02-02', game_master: 'Michael_2' },
-                    { activity_id: allActivities[1]._id, character_id: allCharacters[0]._id, eventDate: '2003-03-03', game_master: 'Michael_3' }
+                    { activity_id: allActivities[0]._id, character_id: allCharacters[0]._id, eventDate: '1111-01-01', game_master: 'Michael' },
+                    { activity_id: allActivities[0]._id, character_id: allCharacters[1]._id, eventDate: '2222-02-02', game_master: 'Tobiasz' },
+                    { activity_id: allActivities[1]._id, character_id: allCharacters[0]._id, eventDate: '3333-03-03', game_master: 'Patrycy' },
+                    { activity_id: allActivities[1]._id, character_id: allCharacters[0]._id, eventDate: '4444-04-04', game_master: 'Patrycy' }
                 ]);
 
             } else {

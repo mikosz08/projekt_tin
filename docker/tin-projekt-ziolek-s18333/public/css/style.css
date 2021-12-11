@@ -13,7 +13,7 @@ body {
 header,
 main,
 footer {
-    background-color: #FFC069;
+    background-color: #fab34f;
 }
 
 .form {
@@ -35,7 +35,7 @@ footer {
 
 header,
 footer {
-    background-color: #FF5151;
+    background-color: #ff4040;
     color: white;
     padding: .35rem;
 }
@@ -81,7 +81,7 @@ nav ul li a:hover {
 }
 
 nav ul li a.active {
-    background-color: #FF5151;
+    background-color: #ff4040;
     color: #161E54;
 }
 
@@ -132,7 +132,7 @@ main h2 {
 .table-details-list tr:nth-child(even),
 .table-list th,
 .table-list tbody tr:nth-child(even) {
-    background-color: #FF5151;
+    background-color: #ff4040;
 }
 
 .table-details-list tbody tr:nth-child(odd),
@@ -275,7 +275,7 @@ textarea {
 }
 
 .symbol-required {
-    color: #FF5151;
+    color: #ff4040;
 }
 
 .form-buttons {
@@ -302,7 +302,7 @@ textarea {
 
 .form input.error-input,
 .form select.error-input {
-    border: 3px solid #FF5151;
+    border: 3px solid #ff4040;
 }
 
 .errors-text {
@@ -326,6 +326,13 @@ textarea {
     padding: .2rem;
 }
 
+.table-details-list a {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: larger;
+    text-decoration: none;
+    color:#00ffbf;
+}
+
 /* media queries */
 @media all and (max-width: 1080px) {
     .table-hidden-cols-first {
@@ -336,7 +343,7 @@ textarea {
 }
 
 @media all and (max-width: 720px) {
-    
+
     header h1 {
         text-align: center;
     }

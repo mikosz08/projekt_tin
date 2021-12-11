@@ -1,8 +1,8 @@
 function validateForm() {
     // Event Validation script.
 
-    const eventGMInput = document.getElementById('Game_Master');
-    const eventDateInput = document.getElementById('Date');
+    const eventGMInput = document.getElementById('game_master');
+    const eventDateInput = document.getElementById('eventDate');
 
     const errorGM = document.getElementById('errorGame_Master');
     const errorDate = document.getElementById('errorDate');
