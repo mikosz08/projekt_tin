@@ -11,17 +11,44 @@ const Character = sequelize.define('Character', {
 
     name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Field required"
+            },
+            len: {
+                args: [2, 30],
+                msg: "Required 2-30 characters"
+            },
+        }
     },
 
     char_class: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Field required"
+            },
+            len: {
+                args: [2, 30],
+                msg: "Required 2-30 characters"
+            },
+        }
     },
 
     race: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Field required"
+            },
+            len: {
+                args: [2, 30],
+                msg: "Required 2-30 characters"
+            },
+        }
     },
 
     aligment: {
@@ -31,8 +58,18 @@ const Character = sequelize.define('Character', {
 
     level: {
         type: Sequelize.INTEGER,
-        allowNull: true
+        allowNull: true,
+        validate: {
+            notEmpty: {
+                msg: "Field required"
+            },
+            isNotInRange() {
+                if (this.level > 20 || this.level < 1) {
+                    throw new Error('Level range: 1-20');
+                }
+            },
+        }
     }
 });
-//TODO: Dodać length do stringów
+
 module.exports = Character;

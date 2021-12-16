@@ -2,45 +2,49 @@
     <main>
         <h2>Event list</h2>
 
-        <table class="table-list">
-            <thead>
-                <tr>
-                    <th>Game_Master</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for (let _event of events) { %>
-                    <tr>
-                        <td>
-                            <%= _event.game_master %>
-                        </td>
-                        <td>
-                            <%=_event.eventDate.toISOString().split('T') [0] %>
-                        </td>
-                        <td>
-                            <ul class="list-actions">
-                                <li>
-                                    <a href="/event/details/<%=_event._id%>"
-                                        class="list-actions-button-details">Details</a>
-                                </li>
-                                <li>
-                                    <a href="/event/edit/<%=_event._id%>" 
-                                        class="list-actions-button-edit">Edit</a>
-                                </li>
-                                <li>
-                                    <a href="/event/delete/<%=_event._id%>"
-                                        class="list-actions-button-delete">Delete</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <% } %>
-            </tbody>
+        <% if (events.length < 1) {%>
+            <h3> Lista jest pusta</h3>
+            <% } else { %>
+                <table class="table-list">
+                    <thead>
+                        <tr>
+                            <th>Game_Master</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let _event of events) { %>
+                            <tr>
+                                <td>
+                                    <%= _event.game_master %>
+                                </td>
+                                <td>
+                                    <%=_event.eventDate.toISOString().split('T') [0] %>
+                                </td>
+                                <td>
+                                    <ul class="list-actions">
+                                        <li>
+                                            <a href="/event/details/<%=_event._id%>"
+                                                class="list-actions-button-details">Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="/event/edit/<%=_event._id%>"
+                                                class="list-actions-button-edit">Edit</a>
+                                        </li>
+                                        <li>
+                                            <a href="/event/delete/<%=_event._id%>"
+                                                class="list-actions-button-delete">Delete</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
 
-        </table>
-        <p><a href="/event/add" class="button-add">Add New Event</a></p>
+                </table>
+                <% } %>
+                    <p><a href="/event/add" class="button-add">Add New Event</a></p>
     </main>
 
     <%- include('../../fragments/footer.ejs') %>

@@ -11,12 +11,37 @@ const Activity = sequelize.define('Activity', {
 
     name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Field required"
+            },
+            len: {
+                args: [2, 30],
+                msg: "Required 2-30 characters"
+            },
+        }
     },
 
     experience: {
         type: Sequelize.DECIMAL,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Field required"
+            },
+            isNotInRange() {
+                if (this.experience < 0) {
+                    throw new Error('Exp is negative!');
+                }
+                if (!this.experience) {
+                    throw new Error('Wrong Format!');
+                }
+                if (isNaN(this.experience)) {
+                    throw new Error('Wrong Format!!');
+                }
+            },
+        }
     }
 });
 

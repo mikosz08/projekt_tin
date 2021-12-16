@@ -7,7 +7,8 @@ exports.showEventList = (req, res, next) => {
         .then(events => {
             res.render('pages/event/list', {
                 events: events,
-                navLocation: 'event'
+                navLocation: 'event',
+                validationErrors: []
             });
         })
 }
@@ -26,10 +27,11 @@ exports.showAddEvent = (req, res, next) => {
                 formMode: 'createNew',
                 allChars: allChars,
                 allActivs: allActivs,
-                pageTitle: 'New Event',
-                btnLabel: 'Add new Event',
+                pageTitle: 'Add Event',
+                btnLabel: 'Add Event',
                 formAction: '/event/add',
-                navLocation: 'event'
+                navLocation: 'event',
+                validationErrors: []
             });
         });
 }
@@ -43,7 +45,8 @@ exports.showEventDetails = (req, res, next) => {
                 formMode: 'showDetails',
                 pageTitle: 'Event Details',
                 formAction: '',
-                navLocation: 'event'
+                navLocation: 'event',
+                validationErrors: []
             });
         });
 }
@@ -58,7 +61,8 @@ exports.showEventEdit = (req, res, next) => {
                 pageTitle: 'Edit Event',
                 btnLabel: 'Edit Event',
                 formAction: '/event/edit',
-                navLocation: 'event'
+                navLocation: 'event',
+                validationErrors: []
             });
         });
 }
@@ -68,8 +72,30 @@ exports.addEvent = (req, res, next) => {
     const eventData = { ...req.body };
     EventRepository.createEvent(eventData)
         .then(result => {
+
             res.redirect('/event')
-        });
+        }).catch(err => {
+            let allChars = [], allActivs = [];
+            CharacterRepository.getCharacters()
+                .then(chars => {
+                    allChars = chars;
+                    return ActivityRepository.getActivity();
+                })
+                .then(activs => {
+                    allActivs = activs;
+                    res.render('pages/event/form', {
+                        event: eventData,
+                        allChars: allChars,
+                        allActivs: allActivs,
+                        pageTitle: 'Add Event',
+                        formMode: 'createNew',
+                        btnLabel: 'Add Event',
+                        formAction: '/event/add',
+                        navLocation: 'event',
+                        validationErrors: err.errors
+                    });
+                });
+        })
 }
 
 
@@ -79,6 +105,16 @@ exports.updateEvent = (req, res, next) => {
     EventRepository.updateEvent(eventId, eventData)
         .then(result => {
             res.redirect('/event')
+        }).catch(err => {
+            res.render('pages/event/form', {
+                event: eventData,
+                pageTitle: 'Edit Event',
+                formMode: 'edit',
+                btnLabel: 'Edit Event',
+                formAction: '/event/edit',
+                navLocation: 'event',
+                validationErrors: err.errors
+            });
         })
 }
 

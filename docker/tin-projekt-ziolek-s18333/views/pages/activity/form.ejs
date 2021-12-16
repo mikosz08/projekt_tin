@@ -6,65 +6,86 @@
             <%= pageTitle %>
         </h2>
 
-        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+        <form class="form" method="post" action="<%=formAction%>" novalidate>
 
             <input type="hidden" name="_id" value="<%= activ._id %>">
 
             <label for="name">Activity_Name: <span class="symbol-required">*</span></label>
-            <input type="text" name="name" id="name" value="<%= activ.name %>"
-                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-            <span id="errorActivity_Name"></span>
+            <input type="text" name="name" id="name" placeholder="e.g. Super Activity" value="<%= activ.name %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> class="<%= validationErrors.find(r=>
+                r.path.includes('name'))?'error-input':''%>"/>
 
-
-            <label for="experience">Experience: <span class="symbol-required">*</span></label>
-            <input type="text" name="experience" id="experience" value="<%= activ.experience %>"
-                <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-            <span id="errorExperience"></span>
-
-            <div class="form-buttons">
-                <p class="errors-text" id="errorsSummary"></p>
-                <% if (formMode=='showDetails' ) {%>
-                    <a href="/activity/edit/<%= activ._id %>" class="form-buttons-submit">Go to Edit</a>
-                    <% } else {%>
-                        <input class="form-buttons-submit" type="submit" value="<%=btnLabel%>" />
-                        <%}%>
-                            <% if (formMode=='showDetails' ) { %>
-                                <a href="/activity" class="form-buttons-cancel">Back</a>
-                                <% } else {%>
-                                    <a href="/activity" class="form-buttons-cancel">Cancel</a>
-
-                                    <%}%>
-            </div>
-
-            <% if ( formMode=='showDetails' || formMode=='edit' ) { %>
-                <h2>Character:</h2>
-
-                <table class="table-details-list">
-                    <thead>
-                        <tr>
-                            <th>Character</th>
-                            <th>Game Master</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <% for (let event of activ.events) { %>
-                            <tr>
-                                <td><a href="/character/details/<%= event.character._id%>">
-                                        <%= event.character.name %>
-                                    </a></td>
-                                <td>
-                                    <%=event.game_master%>
-                                </td>
-                                <td>
-                                    <%=event.eventDate.toISOString().split('T') [0] %>
-                                </td>
-                            </tr>
+                <span id="errorActivity_Name" class="errors-text">
+                    <% if(validationErrors.find(r=> r.path.includes('name'))) {%>
+                        <%= validationErrors.find(r=>r.path.includes('name')).message %>
                             <% } %>
-                    </tbody>
-                </table>
-                <% } %>
+                </span>
+
+
+                <label for="experience">Experience: <span class="symbol-required">*</span></label>
+                <input type="text" name="experience" id="experience" placeholder="something > 0"
+                    value="<%= activ.experience %>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %> class="<%=
+                    validationErrors.find(r=>
+                    r.path.includes('experience'))?'error-input':''%>"/>
+
+                    <span id="errorExperience" class="errors-text">
+                        <% if(validationErrors.find(r=> r.path.includes('experience'))) {%>
+                            <%= validationErrors.find(r=>r.path.includes('experience')).message %>
+                                <% } %>
+                    </span>
+
+                    <div class="form-buttons">
+                        <p class="errors-text" id="errorsSummary"></p>
+                        <% if (formMode=='showDetails' ) {%>
+                            <a href="/activity/edit/<%= activ._id %>" class="form-buttons-submit">Go to Edit</a>
+                            <% } else {%>
+                                <input class="form-buttons-submit" type="submit" value="<%=btnLabel%>" />
+                                <%}%>
+                                    <% if (formMode=='showDetails' ) { %>
+                                        <a href="/activity" class="form-buttons-cancel">Back</a>
+                                        <% } else {%>
+                                            <a href="/activity" class="form-buttons-cancel">Cancel</a>
+
+                                            <%}%>
+                    </div>
+
+                    <% if ( formMode=='showDetails' ) { %>
+
+                        <h2>Character:</h2>
+
+                        <% if ( activ.events < 1) { %>
+                            <h3> Lista jest pusta</h3>
+                            <% } else { %>
+                                <table class="table-details-list">
+                                    <thead>
+                                        <tr>
+                                            <th>Character</th>
+                                            <th>Game Master</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <% for (let event of activ.events) { %>
+                                            <tr>
+                                                <td><a href="/character/details/<%= event.character._id%>">
+                                                        <%= event.character.name %>
+                                                    </a></td>
+                                                <td>
+                                                    <%=event.game_master%>
+                                                </td>
+                                                <td>
+                                                    <%=event.eventDate.toISOString().split('T') [0] %>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                    </tbody>
+                                </table>
+
+                                <% } %>
+
+
+                                    <% } %>
 
         </form>
 

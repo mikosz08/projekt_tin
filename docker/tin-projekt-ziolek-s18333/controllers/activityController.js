@@ -5,7 +5,8 @@ exports.showActivityList = (req, res, next) => {
         .then(activs => {
             res.render('pages/activity/list', {
                 activs: activs,
-                navLocation: 'activ'
+                navLocation: 'activ',
+                validationErrors: []
             });
         })
 }
@@ -17,7 +18,8 @@ exports.showAddActivity = (req, res, next) => {
         formMode: 'createNew',
         btnLabel: 'Add Activity',
         formAction: 'add',
-        navLocation: 'activ'
+        navLocation: 'activ',
+        validationErrors: []
     });
 }
 
@@ -30,7 +32,8 @@ exports.showActivityDetails = (req, res, next) => {
                 formMode: 'showDetails',
                 pageTitle: 'Activity Details',
                 formAction: '',
-                navLocation: 'activ'
+                navLocation: 'activ',
+                validationErrors: []
             });
         });
 }
@@ -45,7 +48,8 @@ exports.showActivityEdit = (req, res, next) => {
                 pageTitle: 'Edit Activity',
                 btnLabel: 'Edit Activity',
                 formAction: '/activity/edit',
-                navLocation: 'activ'
+                navLocation: 'activ',
+                validationErrors: []
             });
         });
 
@@ -57,7 +61,17 @@ exports.addActivity = (req, res, next) => {
     ActivityRepository.createActivity(actData)
         .then(result => {
             res.redirect('/activity')
-        });
+        }).catch(err => {
+            res.render('pages/activity/form', {
+                activ: actData,
+                pageTitle: 'Add Activity',
+                formMode: 'createNew',
+                btnLabel: 'Add Activity',
+                formAction: '/activity/add',
+                navLocation: 'activ',
+                validationErrors: err.errors
+            });
+        })
 }
 
 
@@ -67,6 +81,16 @@ exports.updateCharacter = (req, res, next) => {
     ActivityRepository.updateActivity(actId, actData)
         .then(result => {
             res.redirect('/activity')
+        }).catch(err => {
+            res.render('pages/activity/form', {
+                activ: actData,
+                pageTitle: 'Edit Activity',
+                formMode: 'edit',
+                btnLabel: 'Edit Activity',
+                formAction: '/activity/edit',
+                navLocation: 'activ',
+                validationErrors: err.errors
+            });
         })
 }
 

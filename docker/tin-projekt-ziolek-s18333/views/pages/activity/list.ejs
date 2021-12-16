@@ -3,6 +3,10 @@
     <main>
         <h2>Activity list</h2>
 
+        <% if (activs.length < 1) {%>
+            <h3> Lista jest pusta</h3>
+            <% } else { %>
+
         <table class="table-list">
             <thead>
                 <tr>
@@ -39,6 +43,7 @@
                     <% } %>
 
         </table>
+        <% } %>
         <p><a href="/activity/add" class="button-add">Add New Activity</a></p>
     </main>
 

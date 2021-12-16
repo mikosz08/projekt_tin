@@ -6,7 +6,8 @@ exports.showCharacterList = (req, res, next) => {
         .then(chars => {
             res.render('pages/character/list', {
                 chars: chars,
-                navLocation: 'char'
+                navLocation: 'char',
+                validationErrors: []
             });
         })
 }
@@ -18,7 +19,8 @@ exports.showAddCharacter = (req, res, next) => {
         formMode: 'createNew',
         btnLabel: 'Add Character',
         formAction: 'add',
-        navLocation: 'char'
+        navLocation: 'char',
+        validationErrors: []
     });
 }
 
@@ -31,7 +33,8 @@ exports.showCharacterDetails = (req, res, next) => {
                 formMode: 'showDetails',
                 pageTitle: 'Character Details',
                 formAction: '',
-                navLocation: 'char'
+                navLocation: 'char',
+                validationErrors: []
             });
         });
 }
@@ -46,7 +49,8 @@ exports.showCharacterEdit = (req, res, next) => {
                 pageTitle: 'Edit Character',
                 btnLabel: 'Edit Character',
                 formAction: '/character/edit',
-                navLocation: 'char'
+                navLocation: 'char',
+                validationErrors: []
             });
         });
 }
@@ -56,7 +60,18 @@ exports.addCharacter = (req, res, next) => {
     CharacterRepository.createCharacter(charData)
         .then(result => {
             res.redirect('/character')
-        });
+        })
+        .catch(err => {
+            res.render('pages/character/form', {
+                char: charData,
+                pageTitle: 'Add Character',
+                formMode: 'createNew',
+                btnLabel: 'Add Character',
+                formAction: '/character/add',
+                navLocation: 'char',
+                validationErrors: err.errors
+            });
+        })
 }
 
 
@@ -66,6 +81,16 @@ exports.updateCharacter = (req, res, next) => {
     CharacterRepository.updateCharacter(charId, charData)
         .then(result => {
             res.redirect('/character')
+        }).catch(err => {
+            res.render('pages/character/form', {
+                char: charData,
+                pageTitle: 'Edit Character',
+                formMode: 'edit',
+                btnLabel: 'Edit Character',
+                formAction: '/character/edit',
+                navLocation: 'char',
+                validationErrors: err.errors
+            });
         })
 }
 
@@ -76,7 +101,6 @@ exports.deleteCharacter = (req, res, next) => {
         .then(
             () => {
                 res.redirect('/character')
-            }
-        )
+            })
 }
 

@@ -1,114 +1,120 @@
 <%- include('../../fragments/header.ejs') %>
 
     <main>
-        
-        <% if (formMode=='createNew' ) {%>
-            <script type="application/javascript" src="/JS/validateEventForm.js"></script>
+
+        <% if (formMode=='edit' ) {%>
+            <script type="application/javascript" src="/JS/validateEventEdit.js"></script>
             <% } else { %>
-                <script type="application/javascript" src="/JS/validateEventEdit.js"></script>
+                <script type="application/javascript" src="/JS/validateEventForm.js"></script>
                 <% } %>
 
                     <h2>
                         <%= pageTitle %>
                     </h2>
 
-                    <form class="form" method="post" action="<%=formAction%>" novalidate
-                        onsubmit="return validateForm();">
+                    <form class="form" method="post" action="<%=formAction%>" novalidate>
 
                         <input type="hidden" name="_id" value="<%= event._id %>">
 
                         <% if (formMode=='createNew' ) {%>
                             <label for="activity_id">Activity <span class="symbol-required">*</span></label>
                             <select id="activity_id" name="activity_id" required <select %=(formMode=='showDetails' )
-                                ? 'disabled' : '' %> >
-                                <option value="" selected> == Pick Activity == </option>
-                                <% for (let i=0; i<allActivs.length; i++) { let act=allActivs[i]; %>
-                                    <option value="<%= act._id %>" label="<%= act.name%>">
-                                        <%= (event._id && char._id.toString()==event.character._id.toString())%>
-                                            <% } %>
+                                ? 'disabled' : '' %> class="<%= validationErrors.find(r=>
+                                    r.path.includes('activity_id'))?'error-input':''%>"/>
+
+                                    <option value="" selected> == Pick Activity == </option>
+                                    <% for (let i=0; i<allActivs.length; i++) { let act=allActivs[i]; %>
+                                        <option value="<%= act._id %>" label="<%= act.name%>">
+                                            <%= (event._id && char._id.toString()==event.character._id.toString())%>
+                                                <% } %>
                             </select>
-                            <span id="errorGame_Activity_Id"></span>
+                            <span id="errorGame_Activity_Id" class="errors-text">
+                                <% if(validationErrors.find(r=> r.path.includes('activity_id'))) {%>
+                                    <%= validationErrors.find(r=>r.path.includes('activity_id')).message %>
+                                        <% } %>
+                            </span>
 
                             <label for="character_id">Character_Id <span class="symbol-required">*</span></label>
                             <select id="character_id" name="character_id" required <select %=(formMode=='showDetails' )
-                                ? 'disabled' : '' %>
-                                >
-                                <option value="" selected> == Pick Character == </option>
-                                <% for (let i=0; i<allChars.length; i++) { let char=allChars[i]; %>
-                                    <option value="<%= char._id %>" label="<%= char.name%>">
-                                        <%= (event._id && char._id.toString()==event.character._id.toString())%>
-                                            <% } %>
-                            </select>
-                            <span id="errorCharacter_Id"></span>
-                            <%}%>
-
-                                <label for="eventDate">Date: <span class="symbol-required">*</span></label>
-                                <% if (formMode!='createNew' ) {%>
-                                    <input type="date" name="eventDate" id="eventDate"
-                                        value="<%=event.eventDate.toISOString().split('T')[0] %>"
-                                        <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-                                    <span id="errorDate"></span>
-                                    <% } else { %>
-                                        <input type="date" name="eventDate" id="eventDate" value="<%=event.eventDate%>"
-                                            <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
-                                        <span id="errorDate"></span>
-                                        <% } %>
-
-
-                                            <label for="game_master">Game_Master: <span
-                                                    class="symbol-required">*</span></label>
-                                            <input type="text" name="game_master" id="game_master"
-                                                value="<%= event.game_master %>" <%=(formMode=='showDetails' )
-                                                ? 'disabled' : '' %>/>
-                                            <span id="errorGame_Master"></span>
-
-
-                                            <div class="form-buttons">
-                                                <p class="errors-text" id="errorsSummary"></p>
-                                                <% if (formMode=='showDetails' ) {%>
-                                                    <a href="/event/edit/<%= event._id %>"
-                                                        class="form-buttons-submit">Go to
-                                                        Edit</a>
-                                                    <% } else {%>
-                                                        <input class="form-buttons-submit" type="submit"
-                                                            value="<%=btnLabel%>" />
-                                                        <%}%>
-                                                            <% if (formMode=='showDetails' ) { %>
-                                                                <a href="/event" class="form-buttons-cancel">Back</a>
-                                                                <% } else {%>
-                                                                    <a href="/event"
-                                                                        class="form-buttons-cancel">Cancel</a>
-
-                                                                    <%}%>
-                                            </div>
-
-                                            <% if ( formMode=='showDetails' || formMode=='edit' ) { %>
-                                                <h2>Activity:</h2>
-
-                                                <table class="table-details-list">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Activity</th>
-                                                            <th>Character</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-
-                                                        <tr>
-                                                            <td><a href="/activity/details/<%= event.activity._id%>">
-                                                                    <%= event.activity.name %>
-                                                                </a>
-                                                            </td>
-                                                            <td><a href="/character/details/<%= event.character._id%>">
-                                                                    <%= event.character.name %>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
+                                ? 'disabled' : '' %> class="<%= validationErrors.find(r=>
+                                    r.path.includes('character_id'))?'error-input':''%>"/>
+                                    >
+                                    <option value="" selected> == Pick Character == </option>
+                                    <% for (let i=0; i<allChars.length; i++) { let char=allChars[i]; %>
+                                        <option value="<%= char._id %>" label="<%= char.name%>">
+                                            <%= (event._id && char._id.toString()==event.character._id.toString())%>
                                                 <% } %>
+                            </select>
+                            <span id="errorCharacter_Id" class="errors-text">
+                                <% if(validationErrors.find(r=> r.path.includes('character_id'))) {%>
+                                    <%= validationErrors.find(r=>r.path.includes('character_id')).message %>
+                                        <% } %>
+                            </span>
+                            <%}%>
+                                <label for="eventDate">Date: <span class="symbol-required">*</span></label>
+                                <input type="date" name="eventDate" id="eventDate"
+                                    value="<%=(formMode == 'showDetails') ? event.eventDate.toISOString().split('T') [0] : null%>"
+                                    <%=(formMode=='showDetails' ) ? 'disabled' : '' %> class="<%=
+                                    validationErrors.find(r=>r.path.includes('eventDate'))?'error-input':''%>"/>
+                                    <span id="errorCreationDate" class="errors-text">
+                                        <% if(validationErrors.find(r=> r.path.includes('eventDate'))) {%>
+                                            <%= validationErrors.find(r=>r.path.includes('eventDate')).message %>
+                                                <% } %>
+                                    </span>
+                                    <!-- albo value="<%=event.game_master%>" bez placeholdera-->
+                                    <label for="game_master">Game_Master: <span class="symbol-required">*</span></label>
+                                    <input type="text" name="game_master" id="game_master" placeholder="===Enter Name===" 
+                                    value="<%=""%>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %> class="<%=
+                                        validationErrors.find(r=>
+                                        r.path.includes('game_master'))?'error-input':''%>"/>
+                                        <span id="errorGame_Master" class="errors-text">
+                                            <% if(validationErrors.find(r=> r.path.includes('game_master'))) {%>
+                                                <%= validationErrors.find(r=>r.path.includes('game_master')).message %>
+                                                    <% } %>
+                                        </span>
+
+                                        <div class="form-buttons">
+                                            <p class="errors-text" id="errorsSummary"></p>
+                                            <% if (formMode=='showDetails' ) {%>
+                                                <a href="/event/edit/<%= event._id %>" class="form-buttons-submit">Go to
+                                                    Edit</a>
+                                                <% } else {%>
+                                                    <input class="form-buttons-submit" type="submit"
+                                                        value="<%=btnLabel%>" />
+                                                    <%}%>
+                                                        <% if (formMode=='showDetails' ) { %>
+                                                            <a href="/event" class="form-buttons-cancel">Back</a>
+                                                            <% } else {%>
+                                                                <a href="/event" class="form-buttons-cancel">Cancel</a>
+
+                                                                <%}%>
+                                        </div>
+
+                                        <% if ( formMode=='showDetails' ) { %>
+                                            <h2>Activity:</h2>
+
+                                            <table class="table-details-list">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Activity</th>
+                                                        <th>Character</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><a href="/activity/details/<%= event.activity._id%>">
+                                                                <%= event.activity.name %>
+                                                            </a>
+                                                        </td>
+                                                        <td><a href="/character/details/<%= event.character._id%>">
+                                                                <%= event.character.name %>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                            <% } %>
 
                     </form>
 
